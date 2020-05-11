@@ -2,12 +2,14 @@ This source is based on the sample JAVA code available from https://www.usi.gov.
 
 It works as with 3PT
 * USI Service https://3pt.portal.usi.gov.au/Service/v3/UsiCreateService.svc
-* STS Service https://softwareauthorisations.acc.ato.gov.au/R3.0/S007v1.3/service.svc
+* STS Service https://softwareauthorisations.acc.ato.gov.au/R3.0/S007v1.3/service.svc OR
+* STS Service https://softwareauthorisations.acc.ato.gov.au/R3.0/S007v1.2/service.svc
 * M2M credentials (which replace AUSkey Device credentials)
 
 Alternatively, see below for PROD which uses:
 * USI Service https://portal.usi.gov.au/Service/v3/UsiCreateService.svc
-* STS Service https://softwareauthorisations.ato.gov.au/R3.0/S007v1.3/service.svc
+* STS Service https://softwareauthorisations.ato.gov.au/R3.0/S007v1.3/service.svc OR
+* STS Service https://softwareauthorisations.ato.gov.au/R3.0/S007v1.2/service.svc
 
 
 Dependencies (built and tested with)
@@ -16,8 +18,9 @@ Dependencies (built and tested with)
 * Eclipse 2020-03 (4.15.0)
   - java-11-openjdk-11
   - language compliance level: 1.8
-* modified metro jars available at https://github.com/DamienJDev/metro-wsit/releases (java1.8MetroSigAlgFix.7z)
-  - this allows SHA256 to be specified in the call to the S007v1.3 STS as Metro was defaulting to SHA1 which is not supported
+* If using STS v1.3
+  * modified metro jars available at https://github.com/DamienJDev/metro-wsit/releases (java1.8MetroSigAlgFix.7z)
+    - this allows SHA256 to be specified in the call to the S007v1.3 STS as Metro was defaulting to SHA1 which is not supported
 * AUSkey AKM jars - from ATO - copies available in this repo in releases
 
 Structure
@@ -34,7 +37,7 @@ Structure
   - only used to generate WSDL java src - if needed
   - run for usage
   - requires CXF from https://cxf.apache.org/download.html
-* src/UsiCreateService_3PT.wsdl and UsiCreateService_PROD.wsdl
+* src/UsiCreateService_<env>_sts<sts_version>.wsdl (where env=3PT or PROD; sts_version=12 (sha1) or 13 (sha256))
 * src/META-INF
   - the wsdl definition files
   - contains numerous changes to support *client* side calls
@@ -42,10 +45,12 @@ Structure
 3PT vs PROD
 ===========
 
-* to use 3PT copy src/UsiCreateService_3PT.wsdl to src/META-INF/wsdl/UsiCreateService_CLIENT.wsdl
-* to use PROD copy src/UsiCreateService_PROD.wsdl to src/META-INF/wsdl/UsiCreateService_CLIENT.wsdl
+e.g.
 
-Expected results from run
+* to use 3PT sts12, copy src/UsiCreateService_3PT_sts12.wsdl to src/META-INF/wsdl/UsiCreateService_CLIENT.wsdl
+* to use PROD sts13, copy src/UsiCreateService_PROD_sts13.wsdl to src/META-INF/wsdl/UsiCreateService_CLIENT.wsdl
+
+Sample of expected results from run
 ================
 
 ***********************************************************
@@ -76,5 +81,8 @@ To switch between local and cloud mode (ActAs/Applies to) see the line
 
 2. wsdl2java.bat
 
-If you see "'f' is not recognized as an internal or external command ...", there is a type in the file.
-Line 50: "f %JAVA_VERSION% GTR 8 (" should be if
+If you see the error
+  * "'f' is not recognized as an internal or external command ..."
+there is a type in the batch file.
+  * Line 50: "f %JAVA_VERSION% GTR 8 ("
+Amend the "f" to be "if"
