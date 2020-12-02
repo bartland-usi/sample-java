@@ -1138,7 +1138,8 @@ dep/
 tmp/
 bin/
 obj/
-*.jar
 
 *.Log
 
+# ant build.xml puts prepare/compile/jar outputs in target/
+target

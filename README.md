@@ -1,5 +1,13 @@
 This source is based on the sample JAVA code available from https://www.usi.gov.au/system-developers/sample-code
 
+It currently builds and runs under ant.  We will migrate to maven or gradle after figuring
+out how to do the dependency management (proper maven sources or some workaround).
+
+    ant clean
+    ant clean compile
+    ant clean jar
+    ant runUSITest
+
 It works as is with 3PT using the STS 1.2 SHA1 service.
 * USI Service https://3pt.portal.usi.gov.au/Service/v3/UsiCreateService.svc
 * STS Service https://softwareauthorisations.acc.ato.gov.au/R3.0/S007v1.2/service.svc OR
