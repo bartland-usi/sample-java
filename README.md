@@ -1,4 +1,4 @@
-This source is based on the sample JAVA code available from https://www.usi.gov.au/system-developers/sample-code
+This source is based on the sample JAVA code previously available from https://www.usi.gov.au/system-developers/sample-code
 
 It works as is with 3PT using the STS 1.2 SHA1 service.
 * USI Service https://3pt.portal.usi.gov.au/Service/v3/UsiCreateService.svc
@@ -17,6 +17,8 @@ Building
 Either use
 * IDE - use gh to fetch the jars (see comment in build)
 * ANT - see build
+
+Tested platforms: Windows 10, MacOS, Linux
 
 Notes on contributions:
 1. binaries are banned (use gh)
