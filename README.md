@@ -88,6 +88,14 @@ Ensure environment variables are set properly
 * JAVA_HOME
 * CXF_HOME (must be set to bin subfolder)
 
+The build3/4 scripts will fetch the dependent libs into the libs subfolder:
+
+* abrakm.jar
+* auskey-dep-1.1.jar
+* webservices-api.jar
+* webservices-extra.jar
+* webservices-rt.jar
+
 Structure
 =========
 
