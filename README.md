@@ -1,3 +1,7 @@
+THIS REPOSITORY HAS BEEN MOVED.
+
+Please see https://github.com/ato-pub/usi.cl.java
+
 # Overview
 
 This source is based on the sample JAVA code previously available from https://www.usi.gov.au/system-developers/sample-code
